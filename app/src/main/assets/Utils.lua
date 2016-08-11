@@ -29,12 +29,20 @@ function Utils.startActivity(activity, dataTable)
 	context:startActivity(intent)
 end
 
+function Utils.createTextView()
+	return luajava.newInstance("android.widget.TextView", context)
+end
+
 function Utils.createButton()
 	return luajava.newInstance("android.widget.Button", context)
 end
 
 function Utils.createLinearLayout()
 	return luajava.newInstance("android.widget.LinearLayout", context)
+end
+
+function Utils.createScrollView()
+	return luajava.newInstance("android.widget.ScrollView", context)
 end
 
 function Utils.createOnClickListener(callback)

@@ -1,5 +1,7 @@
 package com.nightfarmer.cloudapp.net;
 
+import android.content.Context;
+
 import java.io.File;
 
 import okhttp3.Call;
@@ -17,6 +19,13 @@ public class HttpCall {
     public static void downLoad(String url, File file, HttpCallback callback) {
         Request request = new Request.Builder().url(url).build();
         FileDownLoadHandler downLoadHandler = new FileDownLoadHandler(file);
+        downLoadHandler.setHttpCallback(callback);
+        okClient.newCall(request).enqueue(downLoadHandler);
+    }
+
+    public static void downLoad(Context context, String url, String fileName, HttpCallback callback) {
+        Request request = new Request.Builder().url(url).build();
+        FileDownLoadHandler downLoadHandler = new FileDownLoadHandler(new File(context.getFilesDir(), fileName));
         downLoadHandler.setHttpCallback(callback);
         okClient.newCall(request).enqueue(downLoadHandler);
     }

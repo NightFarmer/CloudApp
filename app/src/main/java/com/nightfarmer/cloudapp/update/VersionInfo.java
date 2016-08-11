@@ -10,4 +10,6 @@ public class VersionInfo {
     public String versionCode;
     public String downLoadHost;
     public List<FileInfo> fileList;
+
+    public boolean updateAll;
 }

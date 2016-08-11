@@ -10,6 +10,8 @@ import org.keplerproject.luajava.LuaBridge;
 import org.keplerproject.luajava.LuaState;
 import org.keplerproject.luajava.LuaStateFactory;
 
+import java.io.File;
+
 /**
  * Created by zhangfan on 16-8-10.
  */
@@ -21,18 +23,22 @@ public class BaseActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         String activity = getIntent().getStringExtra("Activity");
-        String luaCode = LuaBridge.loadAssets(this, "" + activity + ".lua");
-        if (TextUtils.isEmpty(luaCode)) {
-            Toast.makeText(BaseActivity.this, "功能未实现", Toast.LENGTH_SHORT).show();
-            finish();
-            return;
+        String fileName = "" + activity + ".lua";
+        String loadFile = LuaBridge.loadFile(this, new File(getFilesDir(), fileName));
+        if (TextUtils.isEmpty(loadFile)) {
+            loadFile = LuaBridge.loadAssets(this, fileName);
+            if (TextUtils.isEmpty(loadFile)) {
+                Toast.makeText(BaseActivity.this, "功能未实现", Toast.LENGTH_SHORT).show();
+                finish();
+                return;
+            }
         }
         luaState = LuaStateFactory.newLuaState();
         luaState.openLibs();
 
         luaState.pushJavaObject(this);
         luaState.setGlobal("context");
-        luaState.LdoString(luaCode);
+        luaState.LdoString(loadFile);
     }
 
     public void loadFile(String file) {

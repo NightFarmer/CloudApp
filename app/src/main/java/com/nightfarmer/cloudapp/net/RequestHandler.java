@@ -50,10 +50,11 @@ public class RequestHandler implements Callback {
                 }
             });
         }
+        final String string = response.body().string();
         handler.post(new Runnable() {
             @Override
             public void run() {
-                httpCallback.onSuccess(response.body().toString());
+                httpCallback.onSuccess(string);
                 httpCallback.onFinish();
             }
         });

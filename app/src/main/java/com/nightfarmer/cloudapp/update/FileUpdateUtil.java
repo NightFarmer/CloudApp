@@ -27,10 +27,17 @@ public class FileUpdateUtil {
         if (fileList == null || fileList.size() == 0) {
             return fileUpdateList;
         }
-        File file = new File(context.getFilesDir(), "version.json");
+        if (!versionInfo.updateAll){
+            return fileList;
+        }
+        String fileName = "version.json";
+        File file = new File(context.getFilesDir(), fileName);
         String loadFile = LuaBridge.loadFile(context, file);
         if (TextUtils.isEmpty(loadFile)) {
-            return fileList;
+            loadFile = LuaBridge.loadAssets(context, fileName);
+            if (TextUtils.isEmpty(loadFile)) {
+                return fileList;
+            }
         }
         VersionInfo localInfo = new Gson().fromJson(loadFile, VersionInfo.class);
         List<FileInfo> localFileList = localInfo.fileList;
@@ -46,7 +53,7 @@ public class FileUpdateUtil {
         return fileUpdateList;
     }
 
-    public static void UpdateVersionInfo(Context context, VersionInfo versionInfo) {
+    public static void updateVersionInfo(Context context, VersionInfo versionInfo) {
         File file = new File(context.getFilesDir(), "version.json");
         FileWriter fw = null;
         try {
@@ -65,8 +72,8 @@ public class FileUpdateUtil {
         }
     }
 
-    public static void checkUpdate(final UpdateCheckCallback checkCallback){
-        HttpCall.request("https://github.com/NightFarmer/LuaBridge/raw/master/sample/src/main/assets/NetLuaActivity.lua", new HttpCallback() {
+    public static void checkUpdate(final UpdateCheckCallback checkCallback) {
+        HttpCall.request("https://github.com/NightFarmer/CloudApp/raw/master/app/src/main/assets/version.json", new HttpCallback() {
             @Override
             public void onSuccess(String result) {
                 try {
