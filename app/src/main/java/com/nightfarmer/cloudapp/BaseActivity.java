@@ -1,5 +1,6 @@
 package com.nightfarmer.cloudapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
@@ -28,8 +29,24 @@ public class BaseActivity extends AppCompatActivity {
         }
         luaState = LuaStateFactory.newLuaState();
         luaState.openLibs();
+
+        luaState.pushJavaObject(this);
+        luaState.setGlobal("context");
         luaState.LdoString(luaCode);
     }
 
+    public void loadFile(String file) {
+        String test = LuaBridge.loadAssets(this, "" + file + ".lua");
+        luaState.LdoString(test);
+    }
+//
+//    public String getClassName(){
+//        return this.getClass().getName();
+//    }
 
+    public Intent createActivityIntent(String activityName) {
+        Intent intent = new Intent(this, CommonActivity.class);
+        intent.putExtra("Activity", activityName);
+        return intent;
+    }
 }

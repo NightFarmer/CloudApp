@@ -4,6 +4,13 @@ function onCreate(activity)
 	activity:setContentView(rootView)
 	rootView:setOrientation(1)
 	local button1 = luajava.newInstance("android.widget.Button", activity)
+
+	local intent = activity:getIntent()
+	local name = intent:getStringExtra("name")
+	if(name) then
+		activity:setTitle(name)
+	end
+
 	button1:setText("打开第三个界面")
 	rootView:addView(button1)
 	local btn1Listener = luajava.createProxy("android.view.View$OnClickListener", button1_cb)
