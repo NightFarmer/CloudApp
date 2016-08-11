@@ -1,4 +1,5 @@
 function onCreate(activity)
+	activity:loadFile("Utils")
 	activity:setTitle("模板")
 	local rootView = luajava.newInstance("android.widget.LinearLayout", activity)
 	activity:setContentView(rootView)

@@ -49,4 +49,5 @@ public class BaseActivity extends AppCompatActivity {
         intent.putExtra("Activity", activityName);
         return intent;
     }
+
 }
