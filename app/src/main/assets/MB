@@ -7,6 +7,7 @@ function onCreate(activity)
 
 end
 
+--------------------------------------------------------------------
 function onResume()
 
 end

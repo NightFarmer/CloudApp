@@ -29,12 +29,25 @@ function Utils.startActivity(activity, dataTable)
 	context:startActivity(intent)
 end
 
+function Utils.createIntent()
+	return luajava.newInstance("android.content.Intent")
+end
+
+function Utils.createComponent(pkg, clsName)
+	return luajava.newInstance("android.content.ComponentName", pkg, clsName)
+end
+
 function Utils.createTextView()
 	return luajava.newInstance("android.widget.TextView", context)
 end
 
 function Utils.createButton()
 	return luajava.newInstance("android.widget.Button", context)
+end
+
+
+function Utils.createImageView()
+	return luajava.newInstance("android.widget.ImageView", context)
 end
 
 function Utils.createLinearLayout()
@@ -47,6 +60,23 @@ end
 
 function Utils.createOnClickListener(callback)
 	return luajava.createProxy("android.view.View$OnClickListener", callback)
+end
+
+
+function Utils.createRecyclerView()
+	return luajava.newInstance("com.nightfarmer.cloudapp.recyclerview.LuaRecyclerView", context)
+end
+
+function Utils.createLinearLayoutManager()
+	return luajava.newInstance("android.support.v7.widget.LinearLayoutManager", context)
+end
+
+function Utils.createRecyclerAdapter(callback)
+	return luajava.createProxy("com.nightfarmer.cloudapp.recyclerview.LuaRecyclerAdapter", callback)
+end
+
+function Utils.createRecyclerViewHolder(itemView)
+	return luajava.newInstance("com.nightfarmer.cloudapp.recyclerview.LuaViewHolder", itemView)
 end
 
 function Utils.toast(text)

@@ -21,13 +21,13 @@ public class MainActivity extends AppCompatActivity {
 
 //        setContentView();
 
-        VersionInfo versionInfo = new VersionInfo();
-        versionInfo.versionCode="1";
-        versionInfo.fileList = new ArrayList<>();
-        FileInfo object = new FileInfo();
-        object.version="1";
-        object.name="a";
-        versionInfo.fileList.add(object);
+//        VersionInfo versionInfo = new VersionInfo();
+//        versionInfo.versionCode="1";
+//        versionInfo.fileList = new ArrayList<>();
+//        FileInfo object = new FileInfo();
+//        object.version="1";
+//        object.name="a";
+//        versionInfo.fileList.add(object);
 //        List<FileInfo> fileToUpdate = FileUpdateUtil.getFileToUpdate(this, versionInfo);
 
 //        FileUpdateUtil.UpdateVersionInfo(this,versionInfo);

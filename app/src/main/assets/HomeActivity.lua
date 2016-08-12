@@ -71,5 +71,5 @@ funcList={
 	{name="功能10",activity="TestActivity"},
 	{name="功能11",activity="TestActivity"},
 	{name="功能12",activity="TestActivity22"},
-	{name="设置",activity="SettingActivity"},
+	{name="更新脚本",activity="SettingActivity"},
 }
