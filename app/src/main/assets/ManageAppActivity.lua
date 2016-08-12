@@ -27,7 +27,7 @@ function initAdapterData()
 		local infoObj = appList:get(i) 
 		local appInfo={}
 		appInfo.name = infoObj:loadLabel(packageManager)
-		-- appInfo.icon = infoObj:loadIcon(packageManager)
+		appInfo.icon = infoObj:loadIcon(packageManager)
 		appInfo.infoObj = infoObj
 		appInfoList[i] = appInfo
 	end
@@ -64,7 +64,7 @@ function adapter.onBindViewHolder(holder, position)
 	local appInfo = adapter.dataList[position]
 	holder:putObject("infoObj", appInfo.infoObj)
 	holder:getView("tv_name"):setText(""..appInfo.name)
-	-- holder:getView("iv_icon"):setImageDrawable(appInfo.icon)
+	holder:getView("iv_icon"):setImageDrawable(appInfo.icon)
 end
 function adapter.getItemCount()
 	return #adapter.dataList

@@ -42,8 +42,15 @@ public class BaseActivity extends AppCompatActivity {
     }
 
     public void loadFile(String file) {
-        String test = LuaBridge.loadAssets(this, "" + file + ".lua");
-        luaState.LdoString(test);
+        String fileName = "" + file + ".lua";
+        String loadFile = LuaBridge.loadFile(this, new File(getFilesDir(), fileName));
+        if (TextUtils.isEmpty(loadFile)) {
+            loadFile = LuaBridge.loadAssets(this, fileName);
+            if (TextUtils.isEmpty(loadFile)) {
+                return;
+            }
+        }
+        luaState.LdoString(loadFile);
     }
 //
 //    public String getClassName(){
