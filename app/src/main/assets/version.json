@@ -1,13 +1,17 @@
 {
-    "versionCode": "a2f93be7d8f7c601c0f2a135e0b68166", 
+    "versionCode": "1b9055b61dad5728ff33cad9eb07d4da", 
     "downLoadHost": "https://github.com/NightFarmer/CloudApp/raw/master/app/src/main/assets/", 
     "fileList": [
         {
-            "version": 1470907548.0870402, 
+            "version": 1470988910.851349, 
+            "name": "BillActivity.lua"
+        }, 
+        {
+            "version": 1470981861.6129122, 
             "name": "HomeActivity.lua"
         }, 
         {
-            "version": 1470968784.51533, 
+            "version": 1470969654.7810266, 
             "name": "ManageAppActivity.lua"
         }, 
         {
@@ -19,7 +23,7 @@
             "name": "TestActivity.lua"
         }, 
         {
-            "version": 1470967865.5264633, 
+            "version": 1470982764.635123, 
             "name": "Utils.lua"
         }
     ]
