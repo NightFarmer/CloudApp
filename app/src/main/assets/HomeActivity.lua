@@ -10,10 +10,10 @@ function onCreate(activity)
 	local btn1Listener = Utils.createOnClickListener(button1_cb)
 	button1:setOnClickListener(btn1Listener)
 
-	local recyclerView = luajava.newInstance("com.nightfarmer.cloudapp.recyclerview.LuaRecyclerView", activity)
-	local gridLayoutManager = luajava.newInstance("android.support.v7.widget.GridLayoutManager",activity, 3)
+	local recyclerView = Utils.createRecyclerView()
+	local gridLayoutManager = Utils.createGridLayoutManager(3)
 	recyclerView:setLayoutManager(gridLayoutManager)
-	local adapterProxy = luajava.createProxy("com.nightfarmer.cloudapp.recyclerview.LuaRecyclerAdapter", adapter)
+	local adapterProxy = Utils.createRecyclerAdapter(adapter)
 	recyclerView:setAdapter(adapterProxy)
 	rootView:addView(recyclerView)
 end
@@ -28,7 +28,7 @@ adapter = {}
 function adapter.onCreateViewHolder(parent)
 	local button = Utils.createButton()
 	parent:addView(button)
-	local holder = luajava.newInstance("com.nightfarmer.cloudapp.recyclerview.LuaViewHolder", button)
+	local holder = Utils.createRecyclerViewHolder(button)
 	local btnClickCB = {holder = holder}
 	function btnClickCB.onClick(view)
 		local itemData = btnClickCB.holder:getObject("data")
@@ -60,7 +60,7 @@ end
 
 funcList={
 	{name="管理应用",activity="ManageAppActivity"},
-	{name="功能2",activity="TestActivity"},
+	{name="表单演示",activity="BillActivity"},
 	{name="功能3",activity="TestActivity"},
 	{name="功能4",activity="TestActivity"},
 	{name="功能5",activity="TestActivity"},
@@ -70,6 +70,6 @@ funcList={
 	{name="功能9",activity="TestActivity"},
 	{name="功能10",activity="TestActivity"},
 	{name="功能11",activity="TestActivity"},
-	{name="功能12",activity="TestActivity22"},
+	{name="不存在的功能",activity="TestActivity22"},
 	{name="更新脚本",activity="SettingActivity"},
 }

@@ -45,6 +45,9 @@ function Utils.createButton()
 	return luajava.newInstance("android.widget.Button", context)
 end
 
+function Utils.createEditText()
+	return luajava.newInstance("android.widget.EditText", context)
+end
 
 function Utils.createImageView()
 	return luajava.newInstance("android.widget.ImageView", context)
@@ -52,6 +55,11 @@ end
 
 function Utils.createLinearLayout()
 	return luajava.newInstance("android.widget.LinearLayout", context)
+end
+
+
+function Utils.createLinearLayoutParams(width, height)
+	return luajava.newInstance("android.widget.LinearLayout$LayoutParams", width, height)
 end
 
 function Utils.createScrollView()
@@ -70,6 +78,11 @@ end
 function Utils.createLinearLayoutManager()
 	return luajava.newInstance("android.support.v7.widget.LinearLayoutManager", context)
 end
+
+function Utils.createGridLayoutManager(column)
+	return luajava.newInstance("android.support.v7.widget.GridLayoutManager", context, column)
+end
+
 
 function Utils.createRecyclerAdapter(callback)
 	return luajava.createProxy("com.nightfarmer.cloudapp.recyclerview.LuaRecyclerAdapter", callback)

@@ -3,6 +3,8 @@ package com.nightfarmer.cloudapp;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.ScrollView;
 
 import com.nightfarmer.cloudapp.update.FileInfo;
@@ -37,7 +39,9 @@ public class MainActivity extends AppCompatActivity {
 //        intent.putExtra("Activity", "SettingActivity");
         startActivity(intent);
         finish();
-
+//        new LinearLayout.LayoutParams(0,0).weight=1
 //        new ScrollView(this).fullScroll(ScrollView.FOCUS_DOWN)
+//        new EditText(this).setFilters();
+//        new EditText(this).setInputType();
     }
 }
